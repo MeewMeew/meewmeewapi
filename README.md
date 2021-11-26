@@ -13,7 +13,7 @@ npm install --save meewmeewapi
 
 ## Documentation
 
-You can see it [here](https://github.com/ProCoderMew/meewmeewapi/DOCS.md).
+You can see it [here](https://github.com/ProCoderMew/meewmeewapi/blob/MeewMeew/DOCS.md).
 
 ## Usage Examples:
 
