@@ -1,0 +1,28 @@
+{
+  "name": "meewmeewapi",
+  "version": "1.0.0",
+  "description": "Simple Javascript Client Library for MeewMeew APIs from Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProCoderMew/meewmeewapi.git"
+  },
+  "keywords": [
+    "meewmeew",
+    "api",
+    "nodejs"
+  ],
+  "author": "ProCoderMew",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ProCoderMew/meewmeewapi/issues"
+  },
+  "homepage": "https://meewmeew.info/site",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "fs-extra": "^10.0.0"
+  }
+}
