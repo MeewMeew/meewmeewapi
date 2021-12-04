@@ -1,37 +1,25 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
-name: Node.js Package
-
+name: NPM publish CD workflow
 on:
   release:
-    types: [created]
-
+    types: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+          ref: ${{ github.event.release.target_commitish }}
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
         with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/          
+          node-version: 14
+      - run: yarn install
+      - run: git config --global user.name "ProCoderMew"
+      - run: git config --global user.email "${{ secrets.USER_EMAIL }}"
       - run: npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-      - run: npm ci
-      - run: npm publish --access=publish
+      - run: npm publish --access=public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: git push
+        env:
+          github-token: ${{ secrets.TOKEN }}
