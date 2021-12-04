@@ -12,7 +12,7 @@ jobs:
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - run: yarn install
       - run: git config --global user.name "ProCoderMew"
       - run: git config --global user.email "${{ secrets.USER_EMAIL }}"
