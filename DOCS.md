@@ -73,41 +73,36 @@ meewmeew.covidInfo()
 <a name="get-random-image"></a>
 
 ## Get random image
-__randomImage(imageType)__
+__randomImage(imageType[, path])__
 
 * `imageType`: `girl`, `boy`, `cosplay`, `sexy`, `wibu`, `dog`, `meow (cat)`
-  
+* `path`: Path for image
 Returns buffer image
 
 ```js
 const fs = require('fs-extra');
 meewmeew
-    .randomImage('girl')
-    .then(data => {
-        if (data.error) return console.log(data.error);
-        fs.writeFileSync("./image.jpg", Buffer.from(data.data));
-    })
-    .catch(error => console.error(error))
+    .randomImage('girl', 'image.png')
+    .then(console.log)
+    .catch(console.error)
 ```
 
 ---------------------------------------
 <a name="get-facebook-avatar-from-user-id"></a>
 
 ## Get facebook avatar from user id
-__facebookAvatar(userId)__
+__facebookAvatar(userId[, path])__
 
 * `userId`: User id of Facebook user
+* `path`: Path for image
 
 Returns buffer image
 
 ```js
 const fs = require('fs-extra');
-meewmeew.facebookAvatar(4) // Avatar of Mark Zuckerberg
-    .then(data => {
-        if (data.error) return console.log(data.error);
-        fs.writeFileSync("./image.jpg", Buffer.from(data.data));
-    })
-    .catch(error => console.error(error))
+meewmeew.facebookAvatar(4, 'avatar.png') // Avatar of Mark Zuckerberg
+    .then(console.log)
+    .catch(console.error)
 ```
 
 ---------------------------------------
