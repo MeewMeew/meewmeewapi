@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "prepublish": "tsc -p tsconfig.json"
+    "prepublishOnly": "tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
