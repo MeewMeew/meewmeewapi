@@ -11,6 +11,7 @@
   - [Arrange Word](#arrange-word)
   - [Chat with Simsimi](#chat-with-simsimi)
   - [Teach Simsimi](#teach-simsimi)
+  - [Get results lottery today](#lottery)
 
 ---------------------------------------
 <a name="access-to-api"></a>
@@ -204,6 +205,27 @@ __Example__
 
 ```js
 meewmeew.teachSimsimi('hello', 'hi bae')
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+```
+
+---------------------------------------
+<a name="lottery"></a>
+
+## lotteryToday(where)
+
+Get results lottery today
+
+__Arguments__
+
+* `where`: Default `all`, see more [here](https://meewmeew.info/site/docs#lottery).
+
+Returns results
+
+__Example__
+
+```js
+meewmeew.lotteryToday('ha_noi')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```

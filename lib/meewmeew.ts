@@ -201,6 +201,22 @@ class MeewMeew {
             })
         })
     }
+
+    lotteryToday(where: string = 'all') {
+        var { checkError, apikey } = this;
+        return new Promise(function (resolve, reject) {
+            axios.get(`${apiUrl}/lottery/${where}`, {
+                params: {
+                    apikey: apikey
+                }
+            }).then(function ({ data }) {
+                let check = checkError(data);
+                resolve(check);
+            }).catch(function (error) {
+                reject(error);
+            })
+        })
+    }
 }
 
 export { MeewMeew };
