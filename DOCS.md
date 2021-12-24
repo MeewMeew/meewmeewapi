@@ -212,13 +212,13 @@ meewmeew.teachSimsimi('hello', 'hi bae')
 ---------------------------------------
 <a name="lottery"></a>
 
-## lotteryToday(where)
+## lotteryToday(location)
 
 Get results lottery today
 
 __Arguments__
 
-* `where`: Default `all`, see more [here](https://meewmeew.info/site/docs#lottery).
+* `location`: Default `all`, see more [here](https://meewmeew.info/site/docs#lottery).
 
 Returns results
 
