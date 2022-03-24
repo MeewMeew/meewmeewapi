@@ -215,7 +215,7 @@ class MeewMeew implements MeewMeewInterface {
      * @returns {Promise<any>}
      */
 
-    public chatWithSimsimi(askText: string) {
+    public chatWithSimsimi(askText: string): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/simsimi/api`, {
@@ -232,7 +232,14 @@ class MeewMeew implements MeewMeewInterface {
         })
     }
 
-    public teachSimsimi(ask: string | number, answer: string | number) {
+    /**
+     * 
+     * @param ask string | number
+     * @param answer string | number
+     * @returns {Promise<any>}
+     */
+
+    public teachSimsimi(ask: string | number, answer: string | number): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.post(`${apiUrl}/simsimi/teach`, {
@@ -249,8 +256,14 @@ class MeewMeew implements MeewMeewInterface {
             })
         })
     }
+    
+    /**
+     * 
+     * @param location string
+     * @returns {Promise<any>}
+     */
 
-    public lotteryToday(location = 'all') {
+    public lotteryToday(location: Location = 'all'): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/lottery/${location as string}`, {
