@@ -1,3 +1,3 @@
-import { MeewMeew } from './lib/meewmeew';
+import MeewMeew from "./lib/meewmeew";
 
-export { MeewMeew };
+export default MeewMeew;

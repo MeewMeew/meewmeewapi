@@ -1,8 +1,9 @@
 import { getType, apiUrl } from './utils';
 import axios from 'axios';
 import { writeFile as _writeFile } from 'fs-extra';
+import { MeewMeewInterface, Level, Location } from '../types/meewmeew';
 
-class MeewMeew {
+class MeewMeew implements MeewMeewInterface {
     private apikey: string;
 
     constructor(Apikey: string) {
@@ -40,8 +41,11 @@ class MeewMeew {
             return data;
         }
     }
+    /**
+     * @returns {Promise<any>}
+     */
 
-    accountInfo() {
+    public accountInfo(): Promise<any> {
         var apikey = this.apikey;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/account/info`, {
@@ -56,7 +60,12 @@ class MeewMeew {
         })
     }
 
-    covidInfo() {
+    /**
+     * 
+     * @returns {Promise<any>}
+     */
+
+    public covidInfo(): Promise<any> {
         var apikey = this.apikey;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/covid`, {
@@ -71,7 +80,14 @@ class MeewMeew {
         })
     }
 
-    randomImage(imageType: string, path?: string) {
+    /**
+     * 
+     * @param imageType string
+     * @param path string | undefined
+     * @returns {Promise<any>}
+     */
+
+    public randomImage(imageType: string, path?: string): Promise<any> {
         let { checkPath, writeFile, checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/image/${imageType}`, {
@@ -93,7 +109,14 @@ class MeewMeew {
         })
     }
 
-    facebookAvatar(userId: string | number | undefined, path?: string) {
+    /**
+     * 
+     * @param userId string | number
+     * @param path string | undefined
+     * @returns {Promise<any>}
+     */
+
+    public facebookAvatar(userId: string | number, path?: string): Promise<any> {
         var apikey = this.apikey;
         let { checkPath, writeFile } = this;
         return new Promise(function (resolve, reject) {
@@ -115,7 +138,13 @@ class MeewMeew {
         })
     }
 
-    tiktokVideoNoWatermark(tiktokUrl: string) {
+    /**
+     * 
+     * @param tiktokUrl string
+     * @returns {Promise<any>}
+     */
+
+    public tiktokVideoNoWatermark(tiktokUrl: string): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/tiktok/api`, {
@@ -132,7 +161,14 @@ class MeewMeew {
         })
     }
 
-    linkWord(text: string, lang: string = 'vi') {
+    /**
+     * 
+     * @param text string
+     * @param lang 'vi' | 'en'
+     * @returns {Promise<any>}
+     */
+
+    public linkWord(text: string, lang: string = 'vi'): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/word/linkword`, {
@@ -150,7 +186,13 @@ class MeewMeew {
         })
     }
 
-    arrangeWord(level = 'random') {
+    /**
+     * 
+     * @param level string
+     * @returns {Promise<any>}
+     */
+
+    public arrangeWord(level: Level = 'random'): Promise<any> {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/word/rw`, {
@@ -167,7 +209,13 @@ class MeewMeew {
         })
     }
 
-    chatWithSimsimi(askText: string) {
+    /**
+     * 
+     * @param askText string
+     * @returns {Promise<any>}
+     */
+
+    public chatWithSimsimi(askText: string) {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.get(`${apiUrl}/simsimi/api`, {
@@ -184,7 +232,7 @@ class MeewMeew {
         })
     }
 
-    teachSimsimi(ask: string | number, answer: string | number) {
+    public teachSimsimi(ask: string | number, answer: string | number) {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
             axios.post(`${apiUrl}/simsimi/teach`, {
@@ -202,10 +250,10 @@ class MeewMeew {
         })
     }
 
-    lotteryToday(where: string = 'all') {
+    public lotteryToday(location = 'all') {
         var { checkError, apikey } = this;
         return new Promise(function (resolve, reject) {
-            axios.get(`${apiUrl}/lottery/${where}`, {
+            axios.get(`${apiUrl}/lottery/${location as string}`, {
                 params: {
                     apikey: apikey
                 }
@@ -219,4 +267,4 @@ class MeewMeew {
     }
 }
 
-export { MeewMeew };
+export default MeewMeew

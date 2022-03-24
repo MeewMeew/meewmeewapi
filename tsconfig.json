@@ -1,22 +1,22 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es6", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "target": "esnext", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "lib": [
-      "es5",
-      "dom"
+      "ES2016"
     ],
     "module": "commonjs", /* Specify what module code is generated. */
     "rootDir": "./",
     "resolveJsonModule": true, /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
     "outDir": "./",
+    "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false, /* Enable error reporting for expressions and declarations with an implied `any` type.. */
     "strict": true, /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "exclude": [
-    "lib/*",
     "node_modules/*"
   ]
 }

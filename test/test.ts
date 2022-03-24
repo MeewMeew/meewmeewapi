@@ -1,6 +1,6 @@
-import { MeewMeew } from '../lib/meewmeew';
+import MeewMeew from '../lib/meewmeew';
 
-const meewmeew = new MeewMeew('');
+const meewmeew = new MeewMeew('<YOUR API KEY HERE>');
 
 // meewmeew.accountInfo().then(console.log);
 
