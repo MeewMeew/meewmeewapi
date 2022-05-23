@@ -1,9 +1,10 @@
 {
   "name": "meewmeewapi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple Javascript Client Library for MeewMeew APIs from Node.js",
   "main": "index.js",
   "scripts": {
+    "test": "ts-node test/test.ts",
     "build": "tsc -p tsconfig.json",
     "prepublishOnly": "tsc -p tsconfig.json"
   },

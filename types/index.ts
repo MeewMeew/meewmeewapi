@@ -1,4 +1,4 @@
-export type Level = 'random' | 'easy' | 'normal' | 'hard' | 'extreme';
+export type WordLevel = 'random' | 'easy' | 'normal' | 'hard' | 'extreme';
 export type Location = 'ha_noi' 
               | 'quang_ninh' 
               | 'bac_ninh' 
@@ -40,17 +40,10 @@ export type Location = 'ha_noi'
               | 'da_nang' 
               | 'khanh_hoa' 
               | 'all'
-export type StringNumber = string | number;
 
-export interface MeewMeewInterface {
-  accountInfo(): Promise<any>;
-  covidInfo(): Promise<any>;
-  facebookAvatar(id: number | string, path?: string): Promise<any>;
-  randomImage(imageType: string, path?: string): Promise<any>;
-  tiktokVideoNoWatermark(tiktokUrl: string): Promise<any>;
-  linkWord(text: string, lang: string): Promise<any>;
-  arrangeWord(level: Level): Promise<any>;
-  chatWithSimsimi(text: string): Promise<any>;
-  teachSimsimi(ask: StringNumber, answer: StringNumber): Promise<any>;
-  lotteryToday(location: Location): Promise<any>;
+export type imageType = 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu'
+
+export type optionsParams = {
+  path?: string;
+
 }

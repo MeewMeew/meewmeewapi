@@ -105,3 +105,6 @@ dist
 
 *.js
 *.d.ts
+
+# video, audio, image, font, archive, and other binary files
+*.{avi,mp4,mpeg,mpg,mov,mkv,webm,wav,gif,flac,aac,m4a,mp3,ogg,ogv,opus,flv,swf,woff,woff2,eot,ttf,otf,svg,bmp,jpeg,jpg,png,ico,webp}

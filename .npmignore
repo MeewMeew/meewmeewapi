@@ -1,3 +1,10 @@
-.github/
-*.txt
-test/
+*.ts
+!*.d.ts
+tsconfig.json
+*.md
+LICENSE
+
+github/
+
+.gitignore
+.npmignore
