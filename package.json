@@ -4,24 +4,24 @@
   "description": "Simple Javascript Client Library for MeewMeew APIs from Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node test/test.ts",
+    "test": "ts-node test.ts",
     "prepublish": "npm run build",
     "prepublishOnly": "npm run build",
     "build": "tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProCoderMew/meewmeewapi.git"
+    "url": "git+https://github.com/MeewMeew/meewmeewapi.git"
   },
   "keywords": [
     "meewmeew",
     "api",
     "nodejs"
   ],
-  "author": "ProCoderMew",
+  "author": "MeewMeew",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ProCoderMew/meewmeewapi/issues"
+    "url": "https://github.com/MeewMeew/meewmeewapi/issues"
   },
   "homepage": "https://meewmeew.info/site",
   "dependencies": {

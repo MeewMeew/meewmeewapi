@@ -8,7 +8,7 @@ export default class Image extends MeewMeew {
 
   /**
    * 
-   * @param imageType 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu'
+   * @param imageType 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu' | 'cosplay
    * @param path string
    * @returns Promise<ArrayBuffer>
    */

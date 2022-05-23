@@ -1,4 +1,3 @@
-import { getType, apiUrl } from './utils';
 import axios, { AxiosInstance } from 'axios';
 import fs from 'fs-extra';
 
@@ -10,7 +9,11 @@ class MeewMeew {
     constructor(Apikey: string) {
         this.apikey = Apikey;
         this.axios = axios;
-        this.apiUrl = apiUrl;
+        this.apiUrl = "https://meewmeew.herokuapp.com";
+    }
+
+    public getType(obj: any): string {
+        return Object.prototype.toString.call(obj).slice(8, -1);
     }
     
     public writeFile(data: any, path: string, resolve: Function, reject: Function) {
@@ -24,7 +27,7 @@ class MeewMeew {
     }
 
     public checkPath(path: any, callback: Function) {
-        let pathType = getType(path);
+        let pathType = this.getType(path);
         switch (pathType) {
             case 'String':
                 callback({ isPath: true as boolean, });

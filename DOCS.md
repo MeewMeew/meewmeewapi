@@ -1,39 +1,27 @@
 # Documentation
-
-- [Documentation](#documentation)
-  - [Access to API](#access-to-api)
-  - [Get account infomation](#get-account-infomation)
-  - [Get covid information](#get-covid-information)
-  - [Get random image](#get-random-image)
-  - [Get facebook avatar from user id](#get-facebook-avatar-from-user-id)
-  - [Get tiktok video without watermark](#get-tiktok-video-without-watermark)
-  - [Link word](#link-word)
-  - [Arrange Word](#arrange-word)
-  - [Chat with Simsimi](#chat-with-simsimi)
-  - [Teach Simsimi](#teach-simsimi)
-  - [Get results lottery today](#lottery)
-
----------------------------------------
-<a name="access-to-api"></a>
-
-## Access to API
-
-```js
-const { MeewMeew } = require('meewmeewapi');
-const meewmeew = new MeewMeew('YOUR_APIKEY_HERE'); // Get your free API key at https://meewmeew.info/site
-```
+- [Get account infomation](#get-account-infomation)
+- [Get covid information](#get-covid-information)
+- [Get random image](#get-random-image)
+- [Get facebook avatar from user id](#get-facebook-avatar-from-user-id)
+- [Get tiktok video without watermark](#get-tiktok-video-without-watermark)
+- [Link word](#link-word)
+- [Sort Word](#sort-word)
+- [Chat with Simsimi](#chat-with-simsimi)
+- [Teach Simsimi](#teach-simsimi)
+- [Get results lottery today](#lottery)
 
 ---------------------------------------
 <a name="get-account-infomation"></a>
 
-## accountInfo()
+## Get account infomation
 
-Returns your account information
+### ***`account.info()`***
 
 __Example__
 
 ```js
-meewmeew.accountInfo()
+const account = new MeewMeew.Account('<YOUR_API_KEY>');
+account.info()
     .then(data => console.log(data))
     .catch(error => console.log(error));
 ```
@@ -41,38 +29,36 @@ meewmeew.accountInfo()
 ---------------------------------------
 <a name="get-covid-information"></a>
 
-## covidInfo()
+## Get covid information
 
-Returns Covid-19 information in Viet Nam and the world
+### ***`covid.info()`***
 
 __Example__
 
 ```js
-meewmeew.covidInfo()
+const covid = new MeewMeew.Covid('<YOUR_API_KEY>');
+covid.info()
     .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .catch(error => console.log(error));
 ```
 
 ---------------------------------------
 <a name="get-random-image"></a>
 
-## randomImage(imageType[, path])
+## Get random image
 
-Get random image
+### ***`image.random(imageType[, path])`***
 
 __Arguments__
 
 * `imageType`: `girl`, `boy`, `cosplay`, `sexy`, `wibu`, `dog`, `meow (cat)`
 * `path`: Path for image
 
-Returns buffer image
-
 __Example__
 
 ```js
-const fs = require('fs-extra');
-meewmeew
-    .randomImage('girl', 'image.png')
+const image = new MeewMeew.Image('<YOUR_APIKEY_HERE>')
+image.random('girl', 'image.png')
     .then(console.log)
     .catch(console.error)
 ```
@@ -80,22 +66,20 @@ meewmeew
 ---------------------------------------
 <a name="get-facebook-avatar-from-user-id"></a>
 
-## facebookAvatar(userId[, path])
+## Get facebook avatar
 
-Get facebook avatar from user id
+### ***`facebook.avatar(userId[, path])`***
 
 __Arguments__
 
 * `userId`: User id of Facebook user
 * `path`: Path for image
 
-Returns buffer image
-
 __Example__
 
 ```js
-const fs = require('fs-extra');
-meewmeew.facebookAvatar(4, 'avatar.png') // Avatar of Mark Zuckerberg
+const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
+facebook.avatar('4', 'avatar.png') // Avatar of Mark Zuckerberg
     .then(console.log)
     .catch(console.error)
 ```
@@ -103,108 +87,95 @@ meewmeew.facebookAvatar(4, 'avatar.png') // Avatar of Mark Zuckerberg
 ---------------------------------------
 <a name="get-tiktok-video-without-watermark"></a>
 
-## tiktokVideoNoWatermark(tiktokUrl)
+## Get tiktok video without watermark
 
-Get tiktok video without watermark
+### ***`tiktok.video(url[, path])`***
 
 __Arguments__
 
-* `tiktokUrl`: Link to tiktok video
-
-Returns object data
+* `url`: Link to tiktok video
+* `path`: Path for video
 
 __Example__
 
 ```js
-const fs = require('fs-extra');
-meewmeew.tiktokVideoNoWatermark('https://www.tiktok.com/@choul2002/video/6996459846480465179')
+const tiktok = new MeewMeew.Tiktok('<YOUR_APIKEY_HERE>')
+tiktok.video('https://www.tiktok.com/@choul2002/video/6996459846480465179', 'video.mp4')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```
 
 ---------------------------------------
+
+## Word
 <a name="link-word"></a>
 
-
-## linkWord(word[, lang])
-
-Link word
+### ***`word.linkWord(word[, lang])`***
 
 __Arguments__
 
 * `word`: 1 word in English and 2 words in Vietnamese
 * `lang`: `vi` and `en`, default is `vi`
 
-Returns object data
-
 __Example__
 
 ```js
-meewmeew.linkWord('hello', 'en')
+const word = new MeewMeew.Word('<YOUR_APIKEY_HERE>')
+word.linkWord('hello', 'en')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```
 
----------------------------------------
-<a name="arrange-word"></a>
+<a name="sort-word"></a>
 
-## arrangeWord(level)
-
-Arrange Word
+### ***`word.sortWord(level)`***
 
 __Arguments__
 
 * `level`: `easy`, `normal`, `hard`, `extreme`, `random`, default is `random`.
 
-Returns object data
-
 __Example__
 
 ```js
-meewmeew.arrangeWord('easy')
+const word = new MeewMeew.Word('<YOUR_APIKEY_HERE>')
+word.sortWord('easy')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```
 
 ---------------------------------------
-<a name="chat-with-simsimi"></a>
 
-## chatWithSimsimi(text)
+## Simsimi
 
-Chat with Simsimi
-
-__Arguments__
-
-* `text`: A question or a message or something
-
-Returns message of Simsimi
-
-__Example__
-
-```js
-meewmeew.chatWithSimsimi('hello')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-```
-
----------------------------------------
 <a name="teach-simsimi"></a>
-
-## teachSimsimi(ask, answer)
-
-Teach Simsimi
+### ***`simsimi.teach(ask, answer)`***
 
 __Arguments__
 
 * `ask`: A question
 * `answer`: An answer
 
-Returns status
+__Example__
+
+```js
+const simsimi = new MeewMeew.Simsimi('<YOUR_API_KEY>');
+simsimi.teach('hello', 'hi')
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+```
+
+<a name="chat-with-simsimi"></a>
+### ***`simsimi.chat(ask)`***
+
+__Arguments__
+
+* `ask`: A question
 
 __Example__
 
 ```js
-meewmeew.teachSimsimi('hello', 'hi bae')
+const simsimi = new MeewMeew.Simsimi('<YOUR_API_KEY>');
+simsimi.chat('hello')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```
@@ -212,20 +183,19 @@ meewmeew.teachSimsimi('hello', 'hi bae')
 ---------------------------------------
 <a name="lottery"></a>
 
-## lotteryToday(location)
+## Get results lottery today
 
-Get results lottery today
+### ***`lottery.result(location)`***
 
 __Arguments__
 
 * `location`: Default `all`, see more [here](https://meewmeew.info/site/docs#lottery).
 
-Returns results
-
 __Example__
 
 ```js
-meewmeew.lotteryToday('ha_noi')
+const lottery = new MeewMeew.Lottery('<YOUR_API_KEY>');
+lottery.result('all')
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```

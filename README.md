@@ -6,14 +6,18 @@ Simple Javascript Client Library for [MeewMeew](https://meewmeew.info/site) APIs
 
 ## Installation:
 
-Node.js or other environments using npm:
+Node.js or other environments:
 ```bash
-npm install --save meewmeewapi
+# npm
+npm install meewmeewapi
+
+# yarn
+yarn add meewmeewapi
 ```
 
 ## Documentation
 
-You can see it [here](https://github.com/MeewMeew/meewmeewapi/blob/MeewMeew/DOCS.md).
+You can see it [here](DOCS.md).
 
 ## Usage Examples:
 
@@ -21,6 +25,5 @@ You can see it [here](https://github.com/MeewMeew/meewmeewapi/blob/MeewMeew/DOCS
 
 ```js
 const MeewMeew = require('meewmeewapi');
-const meewmeew = new MeewMeew('YOUR_APIKEY_HERE');
 // Get your free API key at https://meewmeew.info/site
 ```

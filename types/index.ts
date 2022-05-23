@@ -41,7 +41,7 @@ export type Location = 'ha_noi'
               | 'khanh_hoa' 
               | 'all'
 
-export type imageType = 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu'
+export type imageType = 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu' | 'cosplay'
 
 export type optionsParams = {
   path?: string;
