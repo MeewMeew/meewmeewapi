@@ -1,6 +1,8 @@
 import MeewMeew from "./Base";
 import { WordLevel } from "../types";
 
+export type linkWordLanguage = 'vi' | 'en'
+
 export default class Word extends MeewMeew {
   constructor(apikey: string) {
     super(apikey);
@@ -13,13 +15,13 @@ export default class Word extends MeewMeew {
    * @returns Object<{success: boolean, data: string}>
    */
 
-  public linkWord(text: string, lang?: string): Promise<any> {
+  public linkWord(text: string, lang: linkWordLanguage = 'vi'): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/word/link`, {
+      _.axios.get(`${_.apiUrl}/word/linkword`, {
         params: {
           apikey: _.apikey,
-          text: text,
+          ask: text,
           lang: lang
         }
       }).then(function ({ data }) {

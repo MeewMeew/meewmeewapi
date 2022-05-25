@@ -17,8 +17,7 @@ export default class Lottery extends MeewMeew {
     return new Promise(function (resolve, reject) {
       _.axios.get(`${_.apiUrl}/lottery/${location}`, {
         params: {
-          apikey: _.apikey,
-          location: location
+          apikey: _.apikey
         }
       }).then(function ({ data }) {
         resolve(data);
