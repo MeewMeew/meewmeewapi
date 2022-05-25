@@ -1,4 +1,5 @@
 # Documentation
+- [Import module](#import-module)
 - [Get account infomation](#get-account-infomation)
 - [Get covid information](#get-covid-information)
 - [Get random image](#get-random-image)
@@ -12,6 +13,19 @@
 - [Get results lottery today](#lottery)
 
 ---------------------------------------
+<a name="import-module"></a>
+
+## Import module
+
+```js
+// For JavaScript
+const MeewMeew = require('meewmeewapi').default
+
+// For TypeScript
+import MeewMeew from 'meewmeewapi'
+```
+
+---------------------------------------
 <a name="get-account-infomation"></a>
 
 ## Get account infomation
@@ -23,8 +37,8 @@ __Example__
 ```js
 const account = new MeewMeew.Account('<YOUR_API_KEY>');
 account.info()
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -39,8 +53,8 @@ __Example__
 ```js
 const covid = new MeewMeew.Covid('<YOUR_API_KEY>');
 covid.info()
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -61,7 +75,7 @@ __Example__
 const image = new MeewMeew.Image('<YOUR_APIKEY_HERE>')
 image.random('girl', 'image.png')
     .then(console.log)
-    .catch(console.error)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -79,9 +93,9 @@ __Example__
 
 ```js
 const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
-facebook.avatar('4', 'avatar.png') // Avatar of Mark Zuckerberg
+facebook.avatar('4', 'avatar.png')
     .then(console.log)
-    .catch(console.error)
+    .catch(console.error);
 ```
 
 <a name="get-facebook-id-from-facebook-url"></a>
@@ -99,7 +113,7 @@ __Example__
 const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
 facebook.uid('https://www.facebook.com/zuck', fcaApi)
     .then(console.log)
-    .catch(console.error)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -119,8 +133,8 @@ __Example__
 ```js
 const tiktok = new MeewMeew.Tiktok('<YOUR_APIKEY_HERE>')
 tiktok.video('https://www.tiktok.com/@choul2002/video/6996459846480465179', 'video.mp4')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -140,8 +154,8 @@ __Example__
 ```js
 const word = new MeewMeew.Word('<YOUR_APIKEY_HERE>')
 word.linkWord('hello', 'en')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 <a name="sort-word"></a>
@@ -157,8 +171,8 @@ __Example__
 ```js
 const word = new MeewMeew.Word('<YOUR_APIKEY_HERE>')
 word.sortWord('easy')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -178,8 +192,8 @@ __Example__
 ```js
 const simsimi = new MeewMeew.Simsimi('<YOUR_API_KEY>');
 simsimi.teach('hello', 'hi')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 <a name="chat-with-simsimi"></a>
@@ -194,8 +208,8 @@ __Example__
 ```js
 const simsimi = new MeewMeew.Simsimi('<YOUR_API_KEY>');
 simsimi.chat('hello')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------
@@ -214,8 +228,8 @@ __Example__
 ```js
 const lottery = new MeewMeew.Lottery('<YOUR_API_KEY>');
 lottery.result('all')
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .then(console.log)
+    .catch(console.error);
 ```
 
 ---------------------------------------

@@ -35,7 +35,15 @@ You can see it [here](DOCS.md).
 
 ### Node.js
 
+
 ```js
-const MeewMeew = require('meewmeewapi');
-// Get your free API key at https://meewmeew.info/site
+// For JavaScript
+const MeewMeew = require('meewmeewapi').default
+
+// For TypeScript
+import MeewMeew from 'meewmeewapi'
 ```
+
+## APIKEY
+
+### You can get your APIKEY [here](https://meewmeew.herokuapp.com/site).
