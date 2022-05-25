@@ -14,16 +14,16 @@ export default class Facebook extends MeewMeew {
    */
 
   public avatar(userID: string | number, path?: string) {
-    let { writeFile, axios, apiUrl, apikey, isInvalidPath } = this;
+    let { writeFile, axios, apiUrl, apikey, checkError } = this;
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/avatar/${userID}`, {
         params: {
           apikey: apikey
         }
       }).then(function ({ data }) {
-        if (!isInvalidPath(path as string, { file: true })) return reject(new Error('Invalid path: ' + path))
-        writeFile(data, path as string, resolve, reject);
-        return;
+        var check = checkError(data)
+        if (path) return writeFile(check, path as string, resolve, reject);
+        return resolve(check);
       }).catch(function (error) {
         reject(error);
       })

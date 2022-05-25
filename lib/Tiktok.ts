@@ -13,7 +13,7 @@ export default class Tiktok extends MeewMeew {
    */
 
   public video(url: string, path?: string) {
-    let { checkError, writeStream, axios, apiUrl, apikey, isInvalidPath } = this
+    let { checkError, writeStream, axios, apiUrl, apikey } = this
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/tiktok/api`, {
         params: {
@@ -22,9 +22,11 @@ export default class Tiktok extends MeewMeew {
         }
       }).then(function ({ data }) {
         var response = checkError(data)
-        if (!isInvalidPath(path as string, { file: true })) return reject(new Error('Invalid path: ' + path))
-        writeStream(response.video_url, path as string, resolve, reject)
-        return
+        if (path) return writeStream(response.video_url, path as string, resolve, reject)
+        return resolve({
+          success: true,
+          data: response.video_url
+        })
       }).catch(function (error) {
         reject(error)
       })
@@ -39,7 +41,7 @@ export default class Tiktok extends MeewMeew {
  */
 
   public audio(url: string, path?: string) {
-    let { checkError, writeStream, axios, apiUrl, apikey, isInvalidPath } = this
+    let { checkError, writeStream, axios, apiUrl, apikey } = this
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/tiktok/api`, {
         params: {
@@ -48,9 +50,11 @@ export default class Tiktok extends MeewMeew {
         }
       }).then(function ({ data }) {
         var response = checkError(data)
-        if (!isInvalidPath(path as string, { file: true })) return reject(new Error('Invalid path: ' + path))
-        writeStream(response.music_url, path as string, resolve, reject)
-        return
+        if (path) return writeStream(response.audio_url, path as string, resolve, reject)
+        return resolve({
+          success: true,
+          data: response.audio_url
+        })
       }).catch(function (error) {
         reject(error)
       })

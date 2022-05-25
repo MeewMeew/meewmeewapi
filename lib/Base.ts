@@ -3,6 +3,8 @@ import fs from 'fs-extra';
 import got from 'got';
 import path from 'path';
 
+import { isInvalidPath } from './Utils';
+
 class MeewMeew {
   public apikey: string;
   public apiUrl = "https://meewmeew.herokuapp.com";
@@ -24,34 +26,30 @@ class MeewMeew {
     else return true;
   }
 
-  public isInvalidPath(filePath: string, options: any = {}): boolean {
-    const MAX_PATH = options.extended ? 32767 : 260;
-    const isWindows = (opts: any = {}) => process.platform !== 'win32' || opts.windows === true;
-    if (filePath === '' || typeof filePath !== 'string') return true;
-    if (!isWindows(options)) return true;
-    if (typeof filePath !== 'string' || filePath.length > (MAX_PATH - 12)) return true;
-    const rootPath = this.path.parse(filePath).root;
-    if (rootPath) filePath = filePath.slice(rootPath.length);
-    if (options.file) return /[<>:"/\\|?*]/.test(filePath);
-    return /[<>:"|?*]/.test(filePath);
-  }
+  
 
-  public writeFile(data: any, path: string, resolve: Function, reject: Function): void {
-    fs.writeFile(path, Buffer.from(data), function (error) {
+  public writeFile(data: any, pathFile: string, resolve: Function, reject: Function): void {
+    const parsePath = path.parse(path.resolve(pathFile));
+    const basePath = `${parsePath.dir}${parsePath.base}`;
+    if (isInvalidPath(basePath)) return reject({ error: 'Invalid path', success: false });
+    fs.writeFile(basePath, Buffer.from(data), function (error) {
       if (error) {
         reject({ error: error, success: false });
       } else {
-        resolve({ path: path, success: true });
+        resolve({ path: basePath, success: true });
       }
     })
   }
 
-  public writeStream(url: string, path: string, resolve: Function, reject: Function): void {
-    const writer = fs.createWriteStream(path);
+  public writeStream(url: string, pathFile: string, resolve: Function, reject: Function): void {
+    const basePath = path.resolve(pathFile)
+    console.log(basePath)
+    if (isInvalidPath(basePath)) return reject({ error: 'Invalid path', success: false });
+    const writer = fs.createWriteStream(basePath);
     axios.get(url, { responseType: 'stream' }).then(function (response) {
       response.data.pipe(writer);
       writer.on('finish', function () {
-        resolve({ path: path, success: true });
+        resolve({ path: basePath, success: true });
       });
       writer.on('error', function (error) {
         reject({ error: error, success: false });
