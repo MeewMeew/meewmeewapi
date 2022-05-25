@@ -86,7 +86,7 @@ facebook.avatar('4', 'avatar.png') // Avatar of Mark Zuckerberg
 
 <a name="get-facebook-id-from-facebook-url"></a>
 
-### ***`facebook.id(profileUrl[, fcaApi])`***
+### ***`facebook.uid(profileUrl[, fcaApi])`***
 
 __Arguments__
 
@@ -97,7 +97,7 @@ __Example__
 
 ```js
 const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
-facebook.id('https://www.facebook.com/mark.zuckerberg', '<YOUR_API_KEY_HERE>')
+facebook.uid('https://www.facebook.com/zuck', fcaApi)
     .then(console.log)
     .catch(console.error)
 ```
