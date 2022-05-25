@@ -2,7 +2,7 @@ import MeewMeew from "./Base";
 
 export default class Tiktok extends MeewMeew {
   constructor(apikey: string) {
-    super(apikey);
+    super(apikey)
   }
 
   /**
@@ -13,7 +13,7 @@ export default class Tiktok extends MeewMeew {
    */
 
   public video(url: string, path?: string) {
-    let { checkPath, checkError, writeStream, axios, apiUrl, apikey } = this;
+    let { checkError, writeStream, axios, apiUrl, apikey, isInvalidPath } = this
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/tiktok/api`, {
         params: {
@@ -22,18 +22,11 @@ export default class Tiktok extends MeewMeew {
         }
       }).then(function ({ data }) {
         var response = checkError(data)
-        checkPath(path, function (result: any) {
-          if (result.isPath === true) {
-            writeStream(response.video_url, path as string, resolve, reject);
-          } else {
-            resolve({
-              success: true,
-              url: response.video_url
-            });
-          }
-        });
+        if (!isInvalidPath(path as string)) return reject(new Error('Invalid path: ' + path))
+        writeStream(response.video_url, path as string, resolve, reject)
+        return
       }).catch(function (error) {
-        reject(error);
+        reject(error)
       })
     })
   }
@@ -46,7 +39,7 @@ export default class Tiktok extends MeewMeew {
  */
 
   public audio(url: string, path?: string) {
-    let { checkPath, checkError, writeStream, axios, apiUrl, apikey } = this;
+    let { checkError, writeStream, axios, apiUrl, apikey, isInvalidPath } = this
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/tiktok/api`, {
         params: {
@@ -55,18 +48,11 @@ export default class Tiktok extends MeewMeew {
         }
       }).then(function ({ data }) {
         var response = checkError(data)
-        checkPath(path, function (result: any) {
-          if (result.isPath === true) {
-            writeStream(response.music_url, path as string, resolve, reject);
-          } else {
-            resolve({
-              success: true,
-              url: response.music_url
-            });
-          }
-        });
+        if (!isInvalidPath(path as string)) return reject(new Error('Invalid path: ' + path))
+        writeStream(response.music_url, path as string, resolve, reject)
+        return
       }).catch(function (error) {
-        reject(error);
+        reject(error)
       })
     })
   }

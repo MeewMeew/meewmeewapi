@@ -14,7 +14,7 @@ export default class Image extends MeewMeew {
    */
 
   public random(imageType: imageType, path?: string) {
-    let { checkPath, writeFile, checkError, apikey, axios, apiUrl } = this;
+    let { writeFile, checkError, apikey, axios, apiUrl, isInvalidPath } = this;
     return new Promise(function (resolve, reject) {
       axios.get(`${apiUrl}/image/${imageType}`, {
         params: {
@@ -22,13 +22,9 @@ export default class Image extends MeewMeew {
         }
       }).then(function ({ data }) {
         var check = checkError(data);
-        checkPath(path, function (result: any) {
-          if (result.isPath === true) {
-            writeFile(check.data, path as string, resolve, reject);
-          } else {
-            resolve(check.data);
-          }
-        });
+        if (!isInvalidPath(path as string)) return reject(new Error('Invalid path: ' + path))
+        writeFile(check.data, path as string, resolve, reject);
+        return;
       }).catch(function (error) {
         reject(error);
       })
