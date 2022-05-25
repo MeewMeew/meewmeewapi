@@ -5,6 +5,11 @@ export default class Covid extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @returns Covid info
+   */
+
   public info(): Promise<any> {
     var apikey = this.apikey;
     var _ = this;

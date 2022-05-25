@@ -5,6 +5,13 @@ export default class Tiktok extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @param url Tiktok url
+   * @param path Path to save
+   * @returns Stream url to download
+   */
+
   public video(url: string, path?: string) {
     let { checkPath, checkError, writeStream, axios, apiUrl, apikey } = this;
     return new Promise(function (resolve, reject) {
@@ -30,6 +37,13 @@ export default class Tiktok extends MeewMeew {
       })
     })
   }
+
+  /**
+ * 
+ * @param url Tiktok url
+ * @param path Path to save
+ * @returns Stream url to download
+ */
 
   public audio(url: string, path?: string) {
     let { checkPath, checkError, writeStream, axios, apiUrl, apikey } = this;

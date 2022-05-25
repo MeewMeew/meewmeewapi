@@ -5,6 +5,7 @@ tsconfig.json
 LICENSE
 
 github/
+scripts/
 
 .gitignore
 .npmignore

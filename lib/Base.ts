@@ -1,14 +1,17 @@
 import axios, { AxiosInstance } from 'axios';
+import got, { Defaults } from 'got';
 import fs from 'fs-extra';
 
 class MeewMeew {
     public apikey: string;
     public apiUrl: string;
     public axios: AxiosInstance;
+    public got: any;
 
     constructor(Apikey: string) {
         this.apikey = Apikey;
         this.axios = axios;
+        this.got = got;
         this.apiUrl = "https://meewmeew.herokuapp.com";
     }
 

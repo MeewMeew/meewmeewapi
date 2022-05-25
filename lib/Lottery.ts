@@ -6,6 +6,12 @@ export default class Lottery extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @param location Location
+   * @returns Lottery result todays
+   */
+
   public result(location: Location): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {

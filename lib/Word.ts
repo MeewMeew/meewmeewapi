@@ -6,6 +6,13 @@ export default class Word extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @param text string
+   * @param lang vi | en
+   * @returns Object<{success: boolean, data: string}>
+   */
+
   public linkWord(text: string, lang?: string): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
@@ -22,6 +29,12 @@ export default class Word extends MeewMeew {
       })
     })
   }
+
+  /**
+   * 
+   * @param level string
+   * @returns Object<{correct: string, random: Array<string>}>
+   */
 
   public sortWord(level: WordLevel = 'random'): Promise<any> {
     var _ = this;

@@ -5,6 +5,12 @@ export default class Simsimi extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @param text string
+   * @returns Object<{ success: boolean, msg: string }>
+   */
+
   public chat(text: string) {
     var _ = this;
     return new Promise(function (resolve, reject) {
@@ -21,6 +27,13 @@ export default class Simsimi extends MeewMeew {
       })
     })
   }
+
+  /**
+   * 
+   * @param ask string
+   * @param answer string
+   * @returns Object<{ success: boolean, msg: string }>
+   */
 
   public teach(ask: string, answer: string) {
     var _ = this;

@@ -5,6 +5,11 @@ export default class Account extends MeewMeew {
     super(apikey);
   }
 
+  /**
+   * 
+   * @returns Account info
+   */
+
   public info(): Promise<any> {
     var apikey = this.apikey;
     var _ = this;
