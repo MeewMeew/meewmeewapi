@@ -1,6 +1,6 @@
 {
   "name": "meewmeewapi",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple Javascript Client Library for MeewMeew APIs from Node.js",
   "main": "index.js",
   "scripts": {

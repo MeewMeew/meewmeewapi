@@ -21,7 +21,7 @@ export default class Facebook extends MeewMeew {
           apikey: apikey
         }
       }).then(function ({ data }) {
-        if (!isInvalidPath(path as string)) return reject(new Error('Invalid path: ' + path))
+        if (!isInvalidPath(path as string, { file: true })) return reject(new Error('Invalid path: ' + path))
         writeFile(data, path as string, resolve, reject);
         return;
       }).catch(function (error) {

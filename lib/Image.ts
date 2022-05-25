@@ -21,8 +21,8 @@ export default class Image extends MeewMeew {
           apikey: apikey
         }
       }).then(function ({ data }) {
-        var check = checkError(data);
-        if (!isInvalidPath(path as string)) return reject(new Error('Invalid path: ' + path))
+        var check = checkError(data)
+        if (!isInvalidPath(path as string, { file: true })) return reject(new Error('Invalid path: ' + path))
         writeFile(check.data, path as string, resolve, reject);
         return;
       }).catch(function (error) {

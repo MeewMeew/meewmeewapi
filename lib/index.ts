@@ -5,6 +5,7 @@ import Image from "./Image";
 import Lottery from "./Lottery";
 import Simsimi from "./Simsimi";
 import Tiktok from "./Tiktok";
+import Weather from "./Weather";
 import Word from "./Word";
 
-export default { Account, Covid, Facebook, Image, Lottery, Simsimi, Tiktok, Word }
+export default { Account, Covid, Facebook, Image, Lottery, Simsimi, Tiktok, Weather, Word }

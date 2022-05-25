@@ -11,6 +11,7 @@
 - [Chat with Simsimi](#chat-with-simsimi)
 - [Teach Simsimi](#teach-simsimi)
 - [Get results lottery today](#lottery)
+- [Get weather information](#get-weather-information)
 
 ---------------------------------------
 <a name="import-module"></a>
@@ -232,4 +233,24 @@ lottery.result('all')
     .catch(console.error);
 ```
 
+---------------------------------------
+<a name="get-weather-information"></a>
+
+## Get weather information photo
+
+### ***`weather.image(location, path)`***
+
+__Arguments__
+
+* `location`: Location
+* `path`: Path for image
+
+__Example__
+
+```js
+const weather = new MeewMeew.Weather('<YOUR_API_KEY>');
+weather.image('Hanoi', 'weather.png')
+    .then(console.log)
+    .catch(console.error);
+```
 ---------------------------------------
