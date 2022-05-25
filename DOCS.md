@@ -3,6 +3,7 @@
 - [Get covid information](#get-covid-information)
 - [Get random image](#get-random-image)
 - [Get facebook avatar from user id](#get-facebook-avatar-from-user-id)
+- [Get facebook id from facebook url](#get-facebook-id-from-facebook-url)
 - [Get tiktok video without watermark](#get-tiktok-video-without-watermark)
 - [Link word](#link-word)
 - [Sort Word](#sort-word)
@@ -64,9 +65,8 @@ image.random('girl', 'image.png')
 ```
 
 ---------------------------------------
+## Facebook
 <a name="get-facebook-avatar-from-user-id"></a>
-
-## Get facebook avatar
 
 ### ***`facebook.avatar(userId[, path])`***
 
@@ -80,6 +80,24 @@ __Example__
 ```js
 const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
 facebook.avatar('4', 'avatar.png') // Avatar of Mark Zuckerberg
+    .then(console.log)
+    .catch(console.error)
+```
+
+<a name="get-facebook-id-from-facebook-url"></a>
+
+### ***`facebook.id(profileUrl[, fcaApi])`***
+
+__Arguments__
+
+* `profileUrl`: Profile url of Facebook user
+* `fcaApi`: API from [facebook-chat-api](https://github.com/Schmavery/facebook-chat-api)
+
+__Example__
+
+```js
+const facebook = new MeewMeew.Facebook('<YOUR_APIKEY_HERE>')
+facebook.id('https://www.facebook.com/mark.zuckerberg', '<YOUR_API_KEY_HERE>')
     .then(console.log)
     .catch(console.error)
 ```
