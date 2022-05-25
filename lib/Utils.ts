@@ -1,17 +1,22 @@
 import path from "path";
 
-export function isInvalidPath(filePath: string, options: any = {}): boolean {
-  const MAX_PATH = options.extended ? 32767 : 260;
-  const isWindows = (opts: any = {}) => process.platform === 'win32' || opts.windows === true;
-  if (!isWindows(options)) return true;
-  if (filePath === '' || typeof filePath !== 'string') return true;
-  if (filePath.length > (MAX_PATH - 12)) return true;
-  const rootPath = path.parse(filePath).root;
-  if (rootPath) filePath = filePath.slice(rootPath.length);
-  if (options.file) return /[<>:"/\\|?*]/.test(filePath);
-  return /[<>:"|?*]/.test(filePath);
+export default function filenameReservedRegex() {
+  return /[<>:"/\\|?*\u0000-\u001F]/g;
 }
 
-export function isValidPath(filePath: string, options: any = {}): boolean {
-  return !isInvalidPath(filePath, options);
+export function windowsReservedNameRegex() {
+  return /^(con|prn|aux|nul|com\d|lpt\d)$/i;
+}
+
+export function isValidFilename(string: string): boolean {
+  if (!string || string.length > 255) return false;
+  if (filenameReservedRegex().test(string) || windowsReservedNameRegex().test(string)) return false;
+  if (string === '.' || string === '..') return false;
+  return true;
+}
+
+export function isValidPath(string: string): boolean {
+  const parse = path.parse(string);
+  if (!isValidFilename(parse.name)) return false;
+  return true;
 }

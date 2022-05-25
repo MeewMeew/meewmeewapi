@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import got from 'got';
 import path from 'path';
 
-import { isInvalidPath } from './Utils';
+import { isValidPath } from './Utils';
 
 class MeewMeew {
   public apikey: string;
@@ -26,37 +26,22 @@ class MeewMeew {
     else return true;
   }
 
-  
-
   public writeFile(data: any, pathFile: string, resolve: Function, reject: Function): void {
-    const parsePath = path.parse(path.resolve(pathFile));
-    const basePath = `${parsePath.dir}${parsePath.base}`;
-    if (isInvalidPath(basePath)) return reject({ error: 'Invalid path', success: false });
+    const basePath = path.resolve(pathFile)
+    if (!isValidPath(basePath)) return reject({ error: 'Invalid path', success: false });
     fs.writeFile(basePath, Buffer.from(data), function (error) {
-      if (error) {
-        reject({ error: error, success: false });
-      } else {
-        resolve({ path: basePath, success: true });
-      }
+      if (error) return reject({ error: error, success: false });
+      return resolve({ path: basePath, success: true });
     })
   }
 
-  public writeStream(url: string, pathFile: string, resolve: Function, reject: Function): void {
+  public writeStream(url: string, pathFile: string, resolve: any, reject: any): void {
     const basePath = path.resolve(pathFile)
-    console.log(basePath)
-    if (isInvalidPath(basePath)) return reject({ error: 'Invalid path', success: false });
+    if (!isValidPath(basePath)) return reject({ error: 'Invalid path', success: false });
     const writer = fs.createWriteStream(basePath);
-    axios.get(url, { responseType: 'stream' }).then(function (response) {
-      response.data.pipe(writer);
-      writer.on('finish', function () {
-        resolve({ path: basePath, success: true });
-      });
-      writer.on('error', function (error) {
-        reject({ error: error, success: false });
-      });
-    }).catch(function (error) {
-      reject({ error: error, success: false });
-    })
+    got.stream(url).pipe(writer).on('error', (error) => reject({ error: error, success: false }))
+    writer.on('finish', () => resolve({ path: basePath, success: true }));
+    writer.on('error', (error) => reject({ error: error, success: false }));
   }
 
   public checkError(data: any): any {
