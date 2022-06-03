@@ -17,7 +17,8 @@ export default class Simsimi extends MeewMeew {
       _.axios.get(`${_.apiUrl}/simsimi/api`, {
         params: {
           ask: encodeURIComponent(text),
-          apikey: _.apikey
+          apikey: _.apikey,
+          version: _.version
         }
       }).then(function ({ data }) {
         let check = _.checkError(data);

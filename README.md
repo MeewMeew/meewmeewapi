@@ -11,7 +11,7 @@
 ![Github stars](https://img.shields.io/github/stars/MeewMeew/meewmeewapi?style=flat)
 ![Github release](https://img.shields.io/github/release/MeewMeew/meewmeewapi?style=flat)
 ![code helpers](https://www.codetriage.com/meewmeew/meewmeewapi/badges/users.svg)
-[![gitter chat](https://img.shields.io/gitter/room/MeewMeew/meewmeewapi.svg?style=flat-square)](https://gitter.im/MeewMeew/community)
+[![gitter chat](https://img.shields.io/gitter/room/MeewMeew/meewmeewapi.svg?style=flat)](https://gitter.im/MeewMeew/community)
 
 
 Simple Javascript Client Library for [MeewMeew](https://meewmeew.info/site) APIs from Node.js
