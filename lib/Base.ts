@@ -48,6 +48,10 @@ class MeewMeew {
     if (data.error) throw new Error(data.error);
     else return data;
   }
+
+  public get homepage(): string {
+    return this.apiUrl + '/site';
+  }
 }
 
 export default MeewMeew

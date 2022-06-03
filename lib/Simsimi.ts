@@ -38,7 +38,7 @@ export default class Simsimi extends MeewMeew {
   public teach(ask: string, answer: string) {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.post(`${_.apiUrl}/simsimi/teach`, {
+      _.axios.post(`${_.apiUrl}/simsimi/teach`, null, {
         params: {
           ask: encodeURIComponent(ask),
           answer: encodeURIComponent(answer),
