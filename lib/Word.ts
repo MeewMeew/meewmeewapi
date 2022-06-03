@@ -22,7 +22,8 @@ export default class Word extends MeewMeew {
         params: {
           apikey: _.apikey,
           ask: text,
-          lang: lang
+          lang: lang,
+          version: _.version
         }
       }).then(function ({ data }) {
         resolve(data);
@@ -44,7 +45,8 @@ export default class Word extends MeewMeew {
       _.axios.get(`${_.apiUrl}/word/rw`, {
         params: {
           level: level,
-          apikey: _.apikey
+          apikey: _.apikey,
+          version: _.version
         }
       }).then(function ({ data }) {
         let check = _.checkError(data);

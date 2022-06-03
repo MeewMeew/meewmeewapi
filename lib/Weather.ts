@@ -13,11 +13,12 @@ export default class Weather extends MeewMeew {
      */
 
     public image(location: string, path: string) {
-      let { checkError, writeStream, axios, apiUrl, apikey } = this
+      let { checkError, writeStream, axios, apiUrl, apikey, version } = this
       return new Promise(function (resolve, reject) {
         axios.get(`${apiUrl}/weather/${location}`, {
           params: {
-            apikey: apikey
+            apikey: apikey,
+            version: version
           }
         }).then(function ({ data }) {
         var response = checkError(data)

@@ -4,6 +4,7 @@ import got from 'got';
 import path from 'path';
 
 import { isValidPath } from './Utils';
+import { version } from '../package.json'
 
 class MeewMeew {
   public apikey: string;
@@ -11,6 +12,7 @@ class MeewMeew {
   public axios = axios;
   public got = got;
   public path = path;
+  public version = version;
 
   constructor(Apikey: string) {
     this.apikey = Apikey;

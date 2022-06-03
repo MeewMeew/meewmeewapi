@@ -11,12 +11,12 @@ export default class Covid extends MeewMeew {
    */
 
   public info(): Promise<any> {
-    var apikey = this.apikey;
     var _ = this;
     return new Promise(function (resolve, reject) {
       _.axios.get(`${_.apiUrl}/covid`, {
         params: {
-          apikey: apikey
+          apikey: _.apikey,
+          version: _.version
         }
       }).then(function ({ data }) {
         resolve(data);

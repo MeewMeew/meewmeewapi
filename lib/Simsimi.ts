@@ -42,7 +42,8 @@ export default class Simsimi extends MeewMeew {
         params: {
           ask: encodeURIComponent(ask),
           answer: encodeURIComponent(answer),
-          apikey: _.apikey
+          apikey: _.apikey,
+          version: _.version
         }
       }).then(function ({ data }) {
         let check = _.checkError(data);
