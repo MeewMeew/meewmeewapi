@@ -17,6 +17,14 @@ class MeewMeew {
   constructor(Apikey: string) {
     this.apikey = Apikey;
     this.isValidApikey(this.apikey);
+    this.checkUpdate(version);
+  }
+
+  public async checkUpdate(version: string) {
+    const response = await got.get('https://registry.npmjs.org/-/package/meewmeewapi/dist-tags')
+    const data = JSON.parse(response.body);
+    if (data.latest !== version) console.info(`meewmeewapi: New version available, please update with "npm install meewmeewapi@${data.latest}"`);
+    return;
   }
 
   public getType(obj: any): string {
