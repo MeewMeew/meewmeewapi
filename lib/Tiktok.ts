@@ -15,10 +15,10 @@ export default class Tiktok extends MeewMeew {
   public video(url: string, path?: string) {
     let { checkError, writeStream, axios, apiUrl, apikey, version } = this
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/tiktok/api`, {
+      axios.get(`${apiUrl}/tiktok`, {
         params: {
-          apikey: apikey,
           url: url,
+          apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {
@@ -44,10 +44,10 @@ export default class Tiktok extends MeewMeew {
   public audio(url: string, path?: string) {
     let { checkError, writeStream, axios, apiUrl, apikey, version } = this
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/tiktok/api`, {
+      axios.get(`${apiUrl}/tiktok`, {
         params: {
-          apikey: apikey,
           url: url,
+          apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {

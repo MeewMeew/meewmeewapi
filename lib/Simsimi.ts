@@ -14,7 +14,7 @@ export default class Simsimi extends MeewMeew {
   public chat(text: string) {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/simsimi/api`, {
+      _.axios.get(`${_.apiUrl}/simsimi/chat`, {
         params: {
           ask: encodeURIComponent(text),
           apikey: _.apikey,

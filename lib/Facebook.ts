@@ -16,8 +16,9 @@ export default class Facebook extends MeewMeew {
   public avatar(userID: string | number, path?: string) {
     let { writeFile, axios, apiUrl, apikey, checkError, version } = this;
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/avatar/${userID}`, {
+      axios.get(`${apiUrl}/avatar`, {
         params: {
+          id: userID,
           apikey: apikey,
           version: version
         }

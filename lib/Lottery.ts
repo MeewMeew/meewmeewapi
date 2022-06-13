@@ -1,4 +1,4 @@
-import { Location } from "../types";
+import { Province } from "../types";
 import MeewMeew from "./Base";
 
 export default class Lottery extends MeewMeew {
@@ -8,15 +8,16 @@ export default class Lottery extends MeewMeew {
 
   /**
    * 
-   * @param location Location
+   * @param province Province
    * @returns Lottery result todays
    */
 
-  public result(location: Location): Promise<any> {
+  public result(province: Province): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/lottery/${location}`, {
+      _.axios.get(`${_.apiUrl}/lottery`, {
         params: {
+          province: province,
           apikey: _.apikey,
           version: _.version
         }

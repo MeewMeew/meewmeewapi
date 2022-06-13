@@ -1,6 +1,8 @@
 # Documentation
 - [Import module](#import-module)
 - [Get account infomation](#get-account-infomation)
+- [AIO Get list download URL](#aio-list-url)
+- [AIO Downloader](#aio-download)
 - [Get covid information](#get-covid-information)
 - [Get random image](#get-random-image)
 - [Get facebook avatar from user id](#get-facebook-avatar-from-user-id)
@@ -40,6 +42,50 @@ const account = new MeewMeew.Account('<YOUR_API_KEY>');
 account.info()
     .then(console.log)
     .catch(console.error);
+```
+
+---------------------------------------
+
+## AIO Downloader
+<a name="aio-list-url"></a>
+
+### ***`aio.listURL(videoURL)`***
+
+__Arguments__
+
+- `videoURL`: The URL of the video you want to get list url download.
+- `supported`: View more in [Supported video](https://meewmeew.info/site/docs#aio)
+
+__Example__
+
+```js
+const aio = new MeewMeew.Aio('<YOUR_API_KEY>');
+aio.listURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    .then(console.log)
+    .catch(console.error);
+```
+
+<a name="aio-download"></a>
+
+### ***`aio.download(videoURL, outputPath)`***
+
+__Arguments__
+
+- `videoURL`: The URL of the video you want to download (in listURL).
+- `outputPath`: The path you want to save the video.
+
+__Example__
+
+```js
+const aio = new MeewMeew.Aio('<YOUR_API_KEY>');
+aio.listURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ').then(function (data) {
+  console.log(data);
+  if (data.success) {
+    aio.download(data.medias[1].url, 'video.mp4').then(function (data) {
+      console.log(data);
+    })
+  }
+}).catch(console.error);
 ```
 
 ---------------------------------------

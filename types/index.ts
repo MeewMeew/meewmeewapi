@@ -1,5 +1,5 @@
 export type WordLevel = 'random' | 'easy' | 'normal' | 'hard' | 'extreme';
-export type Location = 'ha_noi' 
+export type Province = 'ha_noi' 
               | 'quang_ninh' 
               | 'bac_ninh' 
               | 'hai_phong' 

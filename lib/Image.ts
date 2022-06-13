@@ -16,8 +16,9 @@ export default class Image extends MeewMeew {
   public random(imageType: imageType, path?: string) {
     let { writeFile, checkError, apikey, axios, apiUrl, version } = this;
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/image/${imageType}`, {
+      axios.get(`${apiUrl}/image`, {
         params: {
+          type: imageType,
           apikey: apikey,
           version: version
         }

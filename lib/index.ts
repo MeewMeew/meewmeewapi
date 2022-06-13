@@ -7,5 +7,6 @@ import Simsimi from "./Simsimi";
 import Tiktok from "./Tiktok";
 import Weather from "./Weather";
 import Word from "./Word";
+import Aio from "./Aio";
 
-export default { Account, Covid, Facebook, Image, Lottery, Simsimi, Tiktok, Weather, Word }
+export default { Aio, Account, Covid, Facebook, Image, Lottery, Simsimi, Tiktok, Weather, Word }
