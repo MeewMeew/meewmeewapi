@@ -8,7 +8,7 @@ import { version } from '../package.json'
 
 class MeewMeew {
   public apikey: string;
-  public apiUrl = "http://localhost:80/api/v2";
+  public apiUrl = "https://meewmeew.herokuapp.com/api/v2";
   public axios = axios;
   public got = got;
   public path = path;
