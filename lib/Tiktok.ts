@@ -13,23 +13,22 @@ export default class Tiktok extends MeewMeew {
    */
 
   public video(url: string, path?: string) {
-    let { checkError, writeStream, axios, apiUrl, apikey, version } = this
+    let { writeStream, axios, ApiURLv2, apikey, version } = this
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/tiktok`, {
+      axios.get(`${ApiURLv2}/tiktok`, {
         params: {
           url: url,
           apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {
-        var response = checkError(data)
-        if (path) return writeStream(response.video_url, path as string, resolve, reject)
-        return resolve({
+        if (path && data.success) return writeStream(data.video_url, path as string, resolve, reject)
+        return resolve(!data.success ? data : {
           success: true,
-          data: response.video_url
+          data: data.video_url
         })
       }).catch(function (error) {
-        reject(error)
+        return reject(error)
       })
     })
   }
@@ -42,23 +41,22 @@ export default class Tiktok extends MeewMeew {
  */
 
   public audio(url: string, path?: string) {
-    let { checkError, writeStream, axios, apiUrl, apikey, version } = this
+    let { writeStream, axios, ApiURLv2, apikey, version } = this
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/tiktok`, {
+      axios.get(`${ApiURLv2}/tiktok`, {
         params: {
           url: url,
           apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {
-        var response = checkError(data)
-        if (path) return writeStream(response.audio_url, path as string, resolve, reject)
-        return resolve({
+        if (path && data.success) return writeStream(data.audio_url, path as string, resolve, reject)
+        return resolve(!data.success ? data : {
           success: true,
-          data: response.audio_url
+          data: data.audio_url
         })
       }).catch(function (error) {
-        reject(error)
+        return reject(error)
       })
     })
   }

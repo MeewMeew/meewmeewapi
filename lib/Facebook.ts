@@ -14,20 +14,19 @@ export default class Facebook extends MeewMeew {
    */
 
   public avatar(userID: string | number, path?: string) {
-    let { writeFile, axios, apiUrl, apikey, checkError, version } = this;
+    let { writeFile, axios, ApiURLv2, apikey, version } = this;
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/avatar`, {
+      axios.get(`${ApiURLv2}/avatar`, {
         params: {
           id: userID,
           apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {
-        var check = checkError(data)
-        if (path) return writeFile(check, path as string, resolve, reject);
-        return resolve(check);
+        if (path && data.success) return writeFile(data.data, path as string, resolve, reject);
+        return resolve(data);
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

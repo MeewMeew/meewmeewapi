@@ -2,7 +2,7 @@ import MeewMeew from "./Base";
 import { imageType } from "../types";
 
 export default class Image extends MeewMeew {
-  constructor (apikey: string) {
+  constructor(apikey: string) {
     super(apikey)
   }
 
@@ -14,20 +14,19 @@ export default class Image extends MeewMeew {
    */
 
   public random(imageType: imageType, path?: string) {
-    let { writeFile, checkError, apikey, axios, apiUrl, version } = this;
+    let { writeFile, apikey, axios, ApiURLv2, version } = this;
     return new Promise(function (resolve, reject) {
-      axios.get(`${apiUrl}/image`, {
+      axios.get(`${ApiURLv2}/image`, {
         params: {
           type: imageType,
           apikey: apikey,
           version: version
         }
       }).then(function ({ data }) {
-        var check = checkError(data)
-        if (path) return writeFile(check.data, path as string, resolve, reject);
-        return resolve(check.data)
+        if (path && data.success) return writeFile(data.data, path as string, resolve, reject);
+        return resolve(data)
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

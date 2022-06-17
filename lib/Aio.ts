@@ -13,16 +13,16 @@ export default class Aio extends MeewMeew {
   public listURL(videoURL: string): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/aio`, {
+      _.axios.get(`${_.ApiURLv2}/aio`, {
         params: {
           apikey: _.apikey,
           version: _.version,
           url: encodeURIComponent(videoURL),
         }
       }).then(function ({ data }) {
-        resolve(data);
+        return resolve(data);
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

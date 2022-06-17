@@ -45,5 +45,4 @@ export type imageType = 'meow' | 'dog' | 'sexy' | 'girl' | 'boy' | 'wibu' | 'cos
 
 export type optionsParams = {
   path?: string;
-
 }

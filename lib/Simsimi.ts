@@ -1,7 +1,7 @@
 import MeewMeew from "./Base";
 
 export default class Simsimi extends MeewMeew {
-  constructor (apikey: string) {
+  constructor(apikey: string) {
     super(apikey);
   }
 
@@ -14,17 +14,16 @@ export default class Simsimi extends MeewMeew {
   public chat(text: string) {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/simsimi/chat`, {
+      _.axios.get(`${_.ApiURLv2}/simsimi/chat`, {
         params: {
           ask: encodeURIComponent(text),
           apikey: _.apikey,
           version: _.version
         }
       }).then(function ({ data }) {
-        let check = _.checkError(data);
-        resolve(check);
+        return resolve(data)
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }
@@ -39,7 +38,7 @@ export default class Simsimi extends MeewMeew {
   public teach(ask: string, answer: string) {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.post(`${_.apiUrl}/simsimi/teach`, null, {
+      _.axios.post(`${_.ApiURLv2}/simsimi/teach`, null, {
         params: {
           ask: encodeURIComponent(ask),
           answer: encodeURIComponent(answer),
@@ -47,10 +46,9 @@ export default class Simsimi extends MeewMeew {
           version: _.version
         }
       }).then(function ({ data }) {
-        let check = _.checkError(data);
-        resolve(check);
+        return resolve(data)
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

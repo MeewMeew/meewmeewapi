@@ -15,16 +15,16 @@ export default class Lottery extends MeewMeew {
   public result(province: Province): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/lottery`, {
+      _.axios.get(`${_.ApiURLv2}/lottery`, {
         params: {
           province: province,
           apikey: _.apikey,
           version: _.version
         }
       }).then(function ({ data }) {
-        resolve(data);
+        return resolve(data);
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

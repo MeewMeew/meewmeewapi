@@ -18,7 +18,7 @@ export default class Word extends MeewMeew {
   public linkWord(text: string, lang: linkWordLanguage = 'vi'): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/word/linkword`, {
+      _.axios.get(`${_.ApiURLv2}/word/linkword`, {
         params: {
           ask: text,
           lang: lang,
@@ -26,9 +26,9 @@ export default class Word extends MeewMeew {
           version: _.version
         }
       }).then(function ({ data }) {
-        resolve(data);
+        return resolve(data);
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }
@@ -42,17 +42,16 @@ export default class Word extends MeewMeew {
   public sortWord(level: WordLevel = 'random'): Promise<any> {
     var _ = this;
     return new Promise(function (resolve, reject) {
-      _.axios.get(`${_.apiUrl}/word/random`, {
+      _.axios.get(`${_.ApiURLv2}/word/random`, {
         params: {
           level: level,
           apikey: _.apikey,
           version: _.version
         }
       }).then(function ({ data }) {
-        let check = _.checkError(data);
-        resolve(check);
+        return resolve(data);
       }).catch(function (error) {
-        reject(error);
+        return reject(error);
       })
     })
   }

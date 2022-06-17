@@ -1,6 +1,6 @@
 {
   "name": "meewmeewapi",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Simple Javascript Client Library for MeewMeew APIs from Node.js",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,7 @@
     "prepublish": "npm run build",
     "prepublishOnly": "npm run build",
     "build": "tsc -p tsconfig.json",
-    "push": "node scripts/push.js",
-    "release": "node scripts/release.js",
-    "version": "node scripts/version.js",
-    "done": "npm run version && npm run push && npm run release"
+    "push": "node scripts/all.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/MeewMeew/meewmeewapi/issues"
   },
-  "homepage": "https://meewmeew.info/site",
+  "homepage": "https://mewdev.pro/site",
   "dependencies": {
     "axios": "^0.27.2",
     "form-data": "^4.0.0",
