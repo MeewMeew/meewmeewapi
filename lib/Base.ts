@@ -1,10 +1,11 @@
-import axios from 'axios';
-import fs from 'fs-extra';
-import got from 'got';
-import path from 'path';
+import axios from 'axios'
+import fs from 'fs-extra'
+import got from 'got'
+import path from 'path'
 
-import { isValidPath } from './Utils';
+import { isValidPath } from './Utils'
 import { version } from '../package.json'
+
 
 class MeewMeew {
   public apikey: string
@@ -19,7 +20,7 @@ class MeewMeew {
     this.checkUpdate(version)
   }
 
-  public get HomeURL(): string {
+  private get HomeURL(): string {
     return "https://mewdev.pro"
   }
 
@@ -31,18 +32,18 @@ class MeewMeew {
     return this.HomeURL + '/api/v1'
   }
 
-  public async checkUpdate(version: string) {
+  private async checkUpdate(version: string) {
     const response = await got.get('https://registry.npmjs.org/-/package/meewmeewapi/dist-tags')
     const data = JSON.parse(response.body)
-    if (data.latest !== version) console.info(`meewmeewapi: New version available, please update with "npm install meewmeewapi@${data.latest}"`)
-    return
+    if (data.latest !== version) console.error(`\x1b[31mmeewmeewapi: New version available, please update with "npm install meewmeewapi@${data.latest}"\x1b[0m`)
+    return true;
   }
 
   public getType(obj: any): string {
     return Object.prototype.toString.call(obj).slice(8, -1)
   }
 
-  public isValidApikey(apikey: string): boolean {
+  private isValidApikey(apikey: string): boolean {
     if (!apikey) throw new Error('Invalid APIKEY, please check your APIKEY')
     else return true
   }

@@ -14,7 +14,7 @@
 [![gitter chat](https://img.shields.io/gitter/room/MeewMeew/meewmeewapi.svg?style=flat)](https://gitter.im/MeewMeew/community)
 
 
-Simple Javascript Client Library for [MeewMeew](https://meewmeew.info/site) APIs from Node.js
+Simple Javascript Client Library for [MeewMeew](https://mewdev.pro/site) APIs from Node.js
 
 ## Installation:
 
@@ -46,4 +46,4 @@ import MeewMeew from 'meewmeewapi'
 
 ## APIKEY
 
-### You can get your APIKEY [here](https://meewmeew.herokuapp.com/site).
+### You can get your APIKEY [here](https://mewdev.pro/site).
