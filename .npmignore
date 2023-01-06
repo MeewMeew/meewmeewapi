@@ -3,6 +3,7 @@
 tsconfig.json
 *.md
 LICENSE
+yarn.lock
 
 github/
 scripts/

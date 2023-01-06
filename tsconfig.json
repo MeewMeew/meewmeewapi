@@ -5,7 +5,6 @@
     "lib": [
       "ESNext"
     ],
-    "types": ["node"],
     "module": "commonjs", /* Specify what module code is generated. */
     "rootDir": "./",
     "resolveJsonModule": true, /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
@@ -17,7 +16,10 @@
     "strict": true, /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
+  "include": [
+    "lib/**/*"
+  ],
   "exclude": [
-    "node_modules/*"
+    "node_modules"
   ]
 }
